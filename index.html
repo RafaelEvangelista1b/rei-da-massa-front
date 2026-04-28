@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rei da Massa - Pastelaria</title>
+     <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="./assets/images/logo64.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets//images/logo64.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/logo64.png">
+    <link rel="icon" type="image/png" href="./assets/images/logo64.png">
+    <link rel="shortcut icon" href="./assets/images/logo64.png" type="image/x-icon">
+    <meta name="msapplication-TileImage" content="./assets/images/logo64.png">
+    <meta property="og:image" content="./assets/images/logo64.png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="https://em-content.zobj.net/source/apple/81/stuffed-flatbread_1f959.png">
@@ -91,7 +102,9 @@
             <figure class="md:w-[45%] mt-10 md:mt-0 text-center">
                 <div class="relative inline-block">
                     <div class="w-64 h-64 mx-auto rounded-full bg-orange-100 flex items-center justify-center text-[8rem] shadow-inner">
-                        🥟
+                    <figure class="md:w-[45%] mt-6 md:mt-0">
+                        <img src="./assets/images/banner.png" alt="logo" class="w-[90%] mx-auto">
+                    </figure>
                     </div>
                     <div class="absolute -top-3 -right-3 bg-white rounded-full shadow-lg p-2 text-3xl animate-bounce">✨</div>
                     <div class="absolute -bottom-2 -left-4 bg-white rounded-full shadow-lg p-2 text-2xl">🔥</div>
@@ -250,10 +263,8 @@
     </footer>
 
     <!-- Botão WhatsApp -->
-    <a href="https://wa.me/5515991456699" target="_blank"
-        class="fixed right-5 bottom-24 z-40 bg-green-500 rounded-full w-14 h-14 flex items-center justify-center shadow-lg text-2xl hover:scale-110 transition-transform"
-        title="Chamar no WhatsApp">
-        💬
+    <a href="https://wa.me/5515991456699" target="_blank" class="fixed right-5 bottom-5">
+        <img src="./assets/images/whatsapp.png" alt="link-whatsapp" class="h-[3.25rem]">
     </a>
 
     <!-- MODAL DE DETALHES DO PRODUTO -->
@@ -513,6 +524,14 @@
         }
 
         inicializarCarrinho();
+
+        if('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('Service Worker Registrado no Porto! 🫓', reg))
+                .catch(err => console.error('Erro ao preparar a massa: ', err));
+            });
+        }
     </script>
 
 </body>
